@@ -62,7 +62,7 @@ getNewQuestion = ()=>{
     });
 
     availableQuestions.splice(questionIndex, 1);
-
+    console.log(availableQuestions);
     acceptingAnswer = true;
 };
 
@@ -72,7 +72,13 @@ choices.forEach(choice => {
 
         acceptingAnswer = false;
         const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset['number'];
+        const selectedAnswer = selectedChoice.dataset["number"];
+
+     
+        const classToAplly = selectedAnswer == currentQuestion.answer?'correct':'incorrect';
+        selectedChoice.parentElement.classList.add(classToAplly);
+
+        //selectedChoice.parentElement.classList.remove(classToAplly);
 
         getNewQuestion();
     });
